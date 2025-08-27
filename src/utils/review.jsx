@@ -6,7 +6,7 @@ import axios from "axios";
 function ReviewCarousel() {
   const [reviews, setReviews] = useState([]);
   const defaultImage = "https://itliveacademy.uz/user.png";
-  const imgUrl = "https://edora-backend.onrender.com/uploads/images/";
+  const imgUrl = "https://edora-backend.onrender.com/uploads/image/";
 
   async function fetchRating() {
     try {

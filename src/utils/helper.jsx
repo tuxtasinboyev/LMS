@@ -388,10 +388,7 @@ function MentorCarousel() {
           <div key={idx} className="p-4">
             <div className="relative group overflow-hidden shadow-lg rounded-xl">
               <img
-                src={
-                  mentor.image
-                    ? `${imgBaseUrl}${mentor.image}`
-                    : "/placeholder.jpg"
+                src={ `${imgBaseUrl}${mentor.image}`
                 }
                 alt={mentor.fullName}
                 className="w-full h-[380px] object-cover"
