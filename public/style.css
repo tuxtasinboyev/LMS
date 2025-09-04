@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+.profile:hover .profileN {
+    @apply text-white transition-all
+}

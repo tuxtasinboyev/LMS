@@ -9,6 +9,8 @@ import Courses from './pages/Courses';
 import AboutUs from './pages/AboutUs';
 import { Contact } from './utils/helper';
 import Contacts from './pages/Contact';
+import CoursesAdd from './pages/CoursesAdd';
+import MentorHome from './pages/Mentor/Home';
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
         <Route path="/course" element={<Courses />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<Contacts />} />
+        <Route path="/corsesInfo" element={<CoursesAdd />} />
+        <Route path="/mentorHome" element={<MentorHome />} />
       </Routes>
     </div>
   );

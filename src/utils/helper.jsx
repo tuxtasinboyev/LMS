@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Box, Typography, IconButton, Stack } from '@mui/material';
 import { ArrowForward, ArrowBack } from '@mui/icons-material';
 import React, { useEffect, useRef, useState } from "react";
@@ -8,7 +8,7 @@ import { FaTelegramPlane, FaInstagram, FaFacebook, FaGithub, FaLinkedin } from "
 
 async function fetchCourses() {
   try {
-    const res = await axios.get('https://edora-backend.onrender.com/courses?offset=0&limit=8');
+    const res = await axios.get('http://18.199.221.227:1709/courses?offset=0&limit=8');
     console.log(res.data);
 
     return res.data.data;
@@ -19,7 +19,7 @@ async function fetchCourses() {
 
 async function fetchCategories() {
   try {
-    const res = await axios.get('https://edora-backend.onrender.com/course-category/getAll');
+    const res = await axios.get('http://18.199.221.227:1709/course-category/getAll');
     return res.data;
   } catch (error) {
     console.error("Error fetching categories:", error);
@@ -27,8 +27,9 @@ async function fetchCategories() {
 }
 
 export function CoursesSections() {
-  const imgUrl = 'https://edora-backend.onrender.com/uploads/banner/'
-  const imgUrl2 = 'https://edora-backend.onrender.com/uploads/mentors/'
+  const navigate=useNavigate()
+  const imgUrl = 'http://18.199.221.227:1709/uploads/banner/'
+  const imgUrl2 = 'http://18.199.221.227:1709/uploads/mentors/'
 
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [allCourses, setAllCourses] = useState([]);
@@ -67,9 +68,13 @@ export function CoursesSections() {
   const visibleCourses = filteredCourses.slice(0, visibleCoursesCount);
 
   const handleSeeMore = () => {
+
     setVisibleCoursesCount(visibleCoursesCount + 3);
   };
 
+  const courseInfo=()=>{
+    navigate('/corsesInfo')
+  }
   return (
     <div className='w-full bg-gradient-to-r from-blue-50 via-white to-white'>
       <div className="max-w-screen-xl mx-auto mt-16">
@@ -113,7 +118,7 @@ export function CoursesSections() {
                 </div>
                 <p className="mt-2 text-sm text-gray-600">O'qituvchi: <span className='text-[17px] text-black'> {course.mentor.fullName}</span></p>
                 <div className="mt-4 flex justify-between items-center">
-                  <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500">
+                  <button onClick={courseInfo} className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500">
                     Kursga qo'shish
                   </button>
                 </div>
@@ -140,13 +145,14 @@ export function CoursesSections() {
 
 
 export function CoursesSection() {
-  const imgUrl = 'https://edora-backend.onrender.com/uploads/banner/'
-  const imgUrl2 = 'https://edora-backend.onrender.com/uploads/mentors/'
+  const imgUrl = 'http://18.199.221.227:1709/uploads/banner/'
+  const imgUrl2 = 'http://18.199.221.227:1709/uploads/mentors/'
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [allCourses, setAllCourses] = useState([]);
   const [categories, setCategories] = useState([]);
   const [visibleCoursesCount, setVisibleCoursesCount] = useState(2);
 
+  const navigate=useNavigate()
   useEffect(() => {
     const loadData = async () => {
       const courses = await fetchCourses();
@@ -182,6 +188,10 @@ export function CoursesSection() {
   const handleSeeMore = () => {
     setVisibleCoursesCount(visibleCoursesCount + 3);
   };
+ 
+  const courseInfo=()=>{
+    navigate('/corsesInfo')
+  }
 
   return (
     <div className='w-full bg-gradient-to-r from-blue-50 via-white to-white'>
@@ -230,7 +240,7 @@ export function CoursesSection() {
                 </div>
                 <p className="mt-2 text-sm text-gray-600">O'qituvchi: <span className='text-[17px] text-black'> {course.mentor.fullName}</span></p>
                 <div className="mt-4 flex justify-between items-center">
-                  <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500">
+                  <button onClick={courseInfo} className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500">
                     Kursga qo'shish
                   </button>
                 </div>
@@ -322,7 +332,7 @@ export function MainSec() {
 
 async function fetchMentors() {
   try {
-    const res = await axios.get("https://edora-backend.onrender.com/users/mentors");
+    const res = await axios.get("http://18.199.221.227:1709/users/mentors");
     return res.data?.data || [];
   } catch (error) {
     console.error("Error fetching mentors:", error);
@@ -332,7 +342,7 @@ async function fetchMentors() {
 
 function MentorCarousel() {
   const [allmentors, setAllmentors] = useState([]);
-  const imgBaseUrl = "https://edora-backend.onrender.com/uploads/mentors/";
+  const imgBaseUrl = "http://18.199.221.227:1709/uploads/mentors/";
   const sliderRef = useRef();
   const [direction, setDirection] = useState("forward");
   const slidesToShow = 4;

@@ -11,7 +11,7 @@ function Register() {
   const handlerSubmit = async (e) => {
     setRegisterData(form)
     e.preventDefault()
-    const res = await axios.post('https://edora-backend.onrender.com/verification', {
+    const res = await axios.post('http://18.199.221.227:1709/verification', {
       type: 'register',
       phone: "" + form.phone
     })
