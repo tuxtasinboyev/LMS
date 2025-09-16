@@ -248,7 +248,7 @@ function MentorHome() {
             {/* Main */}
             <div className="flex flex-col flex-1 min-w-0">
                 {/* Topbar */}
-                <header className={`flex items-center justify-between px-4 md:px-6 py-4 border-b backdrop-blur-sm ${darkMode ? "border-gray-700 bg-gray-800/95" : "border-gray-200 bg-white/95"}`}>
+                <header className={`flex z-999 items-center justify-between px-4 md:px-6 py-4 border-b backdrop-blur-sm ${darkMode ? "border-gray-700 bg-gray-800/95" : "border-gray-200 bg-white/95"}`}>
                     <div className="flex items-center gap-4">
                         {!isSidebarOpen && (
                             <button onClick={() => setIsSidebarOpen(true)} className={`p-2 rounded-lg transition-colors md:hidden ${darkMode ? "text-white hover:bg-gray-700" : "text-gray-700 hover:bg-gray-100"}`}>
